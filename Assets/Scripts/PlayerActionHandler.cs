@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerActionHandler : MonoBehaviour
 {
     [SerializeField] private float moveCoolDown=1;
+    [SerializeField] private ActionManager actionManager;
     
     private GameManager gameManager;
     private Vector3 movementInput;
@@ -26,10 +27,8 @@ public class PlayerActionHandler : MonoBehaviour
     private void UpdatePosition()
     {
         if (!canMove) return;
-        Debug.Log("HELLOOOOOO");
-        Vector3 playerPos = transform.position;
-        playerPos=new Vector3(playerPos.x+ (movementInput.x),playerPos.y,playerPos.z+ (movementInput.z));
-        transform.position = playerPos;
+        Movement move = new Movement(this, movementInput);
+        actionManager.Record(move);
         canMove = false;
         StartCoroutine(MoveCoolDown());
     }
