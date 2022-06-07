@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ActionManager : MonoBehaviour
 {
-    private readonly Stack<Actionable> actionables;
+    private readonly Stack<Actionable> actionables=new Stack<Actionable>();
     public void Record(Actionable action)
     {
         actionables.Push(action);
@@ -12,6 +12,7 @@ public class ActionManager : MonoBehaviour
 
     public void Undo()
     {
-        
+        Actionable action=actionables.Pop();
+        action.Undo();
     }
 }

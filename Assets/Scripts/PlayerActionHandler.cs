@@ -23,6 +23,14 @@ public class PlayerActionHandler : MonoBehaviour
         movementInput = new Vector3(movementInput2d.x*10, 0, movementInput2d.y*10);
         UpdatePosition();
     }
+    
+    public void OnUndoInput(InputAction.CallbackContext ctx)
+    {
+        if (!canMove) return;
+        actionManager.Undo();
+        canMove=false;
+        StartCoroutine(MoveCoolDown());
+    }
 
     private void UpdatePosition()
     {
