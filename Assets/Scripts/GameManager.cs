@@ -3,6 +3,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    private int score;
+    public int Score => score;
+
     public static GameManager Instance
     {
         get
@@ -24,5 +27,10 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
         _instance = this;
+    }
+    
+    public void AddCoin()
+    {
+        score += 1;
     }
 }

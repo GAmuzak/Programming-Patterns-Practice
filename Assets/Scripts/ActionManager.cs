@@ -12,7 +12,8 @@ public class ActionManager : MonoBehaviour
 
     public void Undo()
     {
-        Actionable action=actionables.Pop();
+        if (actionables.Count <= 0) return;
+        Actionable action = actionables.Pop();
         action.Undo();
     }
 }

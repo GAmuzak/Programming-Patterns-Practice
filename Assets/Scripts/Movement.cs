@@ -23,11 +23,10 @@ public class Movement : Actionable
     
     private void Move()
     {
-        prevPosition = _player.transform.position;
         Transform playerTransform = _player.transform;
-        Vector3 playerPos = playerTransform.position;
-        playerPos=new Vector3(playerPos.x+ (_movementInput.x),playerPos.y,playerPos.z+ (_movementInput.z));
-        playerTransform.position = playerPos;
+        prevPosition = playerTransform.position;
+        playerTransform.position = new Vector3(prevPosition.x+ (_movementInput.x),prevPosition.y,prevPosition.z+ (_movementInput.z));
+        
     }
 
     private void MoveBack()
